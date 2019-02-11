@@ -14,30 +14,48 @@
 
 int str_count(char *s)
 {
-    int i;
-    int k;
-    int j;
+	int i;
+	int k;
+	int j;
 
-    i = 0;
-    j = 0;
-    k = 0;
-    while (*s)
-    {
-        if (*s == '.')
-            j++;
-        if (*s == '#')
-            i++;
-        k++;
-        s++;
-    }
-    return (j == 12 && i == 4 && k == 16 ? 1 : 0);
+	i = 0;
+	j = 0;
+	k = 0;
+	while (*s)
+	{
+		if (*s == '.')
+			j++;
+		if (*s == '#')
+			i++;
+		k++;
+		s++;
+	}
+	return (j == 12 && i == 4 && k == 16 ? 1 : 0);
 }
 
 int str_position(char *s)
 {
-    while (*s)
-    {
-        if (*s == '#')
-            
-    }
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (*s)
+	{
+		i++;
+		if (*s == '#' && j != 3)
+		{
+			if (*(s + 1) == '#' || *(s + 4) == '#' ||
+				(i % 4 > 1 && *(s + 2) == '#' &&
+				(i % 4 > 2 && *(s + 3) == '#') &&
+				(i % 4 > 2 && *(s + 4) == '#')) ||
+				(i % 4 > 2 && *(s + 3) == '#' &&
+				(i % 4 > 2 && *(s + 4) == '#' ))
+				j++;
+			else
+				return (0);
+		}
+		s++;
+	}
+	return (1);
 }

@@ -12,7 +12,8 @@
 
 #ifndef FILLIT_H
 # define FILLIT_H
-
+# define USI unsigned short int
 # include "get_next_line.h"
+# include <fcntl.h>
 
 #endif
