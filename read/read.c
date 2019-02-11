@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-USI	ter_transform(char *s)
+USI static ter_transform(char *s)
 {
 	USI rez;
 	USI i;
@@ -37,7 +37,7 @@ USI	ter_transform(char *s)
 	return (rez);
 }
 
-USI *error_cleaner(char *s, char *s2, USI *a)
+USI	static *error_cleaner(char *s, char *s2, USI *a)
 {
 	if (a)
 		free(a);
@@ -46,6 +46,13 @@ USI *error_cleaner(char *s, char *s2, USI *a)
 	if (s2)
 		free(s2);
 	return (NULL);
+}
+
+USI	 static *fuller(int i, USI *rez)
+{
+	while (i < 25)
+		rez[i++] = 0;
+	return (rez);
 }
 
 USI *reader(char *file_name)
@@ -75,5 +82,5 @@ USI *reader(char *file_name)
 			tetr = NULL;
 		}
 	}
-	return (rez);
+	return (fuller(rez));
 }
