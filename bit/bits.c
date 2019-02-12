@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "fillit.h"
+#include "fillit.h"
 
 int	gnb(unsigned char byte, int n) /*get n'th bit*/
 {
@@ -21,19 +21,7 @@ int	gnb(unsigned char byte, int n) /*get n'th bit*/
 	i = 1 << (7 - n);
 	return ((byte & i) > 0);
 }
-/*
-int	ft_power(int nbr, int n)
-{
-	int	rez;
-	
-	rez = 1;
-	while (n--)
-	{
-		rez *= nbr;
-	}
-	return (rez);
-}
-*/
+
 int snb(unsigned char byte, int n, int bit) /*set n'th bit*/
 {
 	if ((bit != 0 && bit != 1) || n < 0 || n > 7)
@@ -57,15 +45,3 @@ void	print_bits(unsigned char c)
 	}
 	write(1, "\n", 1);
 }
-
-/*
-int main()
-{
-	int a = 0xFF;
-	printf("%d -- %d\n", a, gnb(a, 0));
-	print_bits(a);
-	a = snb(a, 3, 0);
-	printf("%d -- %d\n", a, gnb(a, 0));
-	print_bits(a);
-}
-*/

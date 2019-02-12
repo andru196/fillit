@@ -20,9 +20,9 @@ USI static ter_transform(char *s)
 
 	i = 15;
 	j = 16;
+	rez = 0;
 	while (j-- && *s != '#')
 		s++;
-	printf("%d\n", j);
 	if  ((j % 4) < 2 && *(s + 2) == '#')
 		s -= 2;
 	else if ((j % 4) < 3 && *(s + 3) == '#')
@@ -65,14 +65,14 @@ USI *reader(char *file_name)
 
 	if ((fd = open(file_name, O_RDONLY)) < 0)
 		return NULL;
-	if (!(rez = ft_memmalloc(sizeof(USI) * 25)))
+	if (!(rez = ft_memalloc(sizeof(USI) * 25)))
 		return rez;
 	i = 0;
 	while (get_next_line(fd, &str) == 1)
 	{
 		if (!(tetr = ft_strjoin(tetr, str)))
 			return error_cleaner(tetr, str, rez);
-		if (ft_strlen(tetr > 15))
+		if (ft_strlen(tetr) > 15)
 		{
 			if (str_count(tetr) && str_position(tetr))
 				rez[i++] = ter_transform(tetr);
@@ -82,5 +82,5 @@ USI *reader(char *file_name)
 			tetr = NULL;
 		}
 	}
-	return (fuller(rez));
+	return (fuller(i, rez));
 }
