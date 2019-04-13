@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 13:54:35 by ycorrupt          #+#    #+#             */
-/*   Updated: 2019/04/13 22:10:04 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:59:34 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,33 @@
 
 int		ft_bruter(USI f[26][3], char *square, int el, int s)
 {
-	int i;
-	int flag;
-
 	if (el == 26 || f[el][0] == 0)
 		return (1);
-	i = el;
-	while (f[i][0])
+	while (1)
 	{
-		ft_swap(f, el, i);
-		flag = 0;
-		while (1)
-		{
-			if (ft_insert(f[el], square, s) == -1)
-			{
-				flag++;
-				break;
-			}
-			else
-				flag--;
-			if (ft_bruter(f, square, el + 1, s) == 1)
-				return (1);
-			ft_clear(f, square, el, s);
-		}
-	//	f[el][2] = 4044;
-		if (flag == 1)
+		if (ft_insert(f[el], square, s) == -1)
 			break;
-		i = equal_tetr(el, i, f);
+		else
+			equal_tetr(el, f);
+		if (ft_bruter(f, square, el + 1, s) == 1)
+			return (1);
+		ft_clear(f, square, el, s);
 	}
+	f[el][2] = 4044;
 	return (0);
 }
 
-int		equal_tetr(int el, int i, USI f[26][3])
+void		equal_tetr(int el, USI f[26][3])
 {
-
 	int temp;
-	temp = el;
-	++i;
-	while (el < i)
+
+	temp = el + 1;
+	while (temp < 26 && f[temp][0])
 	{
-		if (f[el++][0] == f[i][0])
-		{	
-			++i;
-			el = temp;
-			continue ;
-		}
+		if (f[temp][0] == f[el][0])
+			f[temp][2] = f[el][2];
+		++temp;
 	}
-	return (i);
 }
 
 void	ft_swap(USI f[26][3], int el, int i)

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 14:49:56 by ycorrupt          #+#    #+#             */
-/*   Updated: 2019/04/13 19:19:33 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/04/13 23:05:14 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	ft_sq_clear(USI f[26][3], char *square, int el, int s)
 			{
 				if (gnb(f[i][0], j))
 				{
+					if (square[f[i][2] + (j / 4 * s) + j % 4] != f[i][1])
+						break;
 					k++;
 					square[f[i][2] + (j / 4 * s) + j % 4] = '.';
 					if (k == 4)

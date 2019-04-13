@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/09 14:33:52 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/04/13 16:21:51 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/04/13 22:41:30 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ void	ft_print_result(char *square, int side);
 int		fillit(USI figure[26][3]);
 int		ft_error(int error);
 void	inzero(USI f[26][3]);
-int		equal_tetr(int el, int i, USI f[26][3]);
+void	equal_tetr(int el, USI f[26][3]);
 
 #endif
