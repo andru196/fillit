@@ -6,11 +6,50 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 17:22:16 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/04/12 20:23:07 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:15:38 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+
+void	ft_tochechka(char *sq, int side)
+{
+	int i;
+
+	i = -1;
+	while (++i < side * side)
+		*sq++ = '.';
+}
+
+int		fillit(USI figure[26][3])
+{
+    int		side;
+    char	*square;
+	int 	i;
+
+	side = 0;
+	while (figure[side][0])
+		++side;
+	if ((side = ft_side(side)) == -1)
+		return (-1);
+	while (1)
+	{
+		if (!(square = ft_strnew(side * side)))
+			return (-1);
+		ft_tochechka(square, side);
+		if (ft_bruter(figure, square, 0, side) == 1)
+			break ;
+		ft_memdel((void **)&square);
+		++side;
+		i = 0;
+		while (figure[i][0])
+			figure[i++][2] = 4044;
+	}
+	ft_print_result(square, side);
+	ft_memdel((void **)&square);
+	return (1);
+}
 
 int ft_error(int error)
 {

@@ -6,7 +6,7 @@
 /*   By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 16:32:19 by sfalia-f          #+#    #+#             */
-/*   Updated: 2019/04/10 18:43:40 by ycorrupt         ###   ########.fr       */
+/*   Updated: 2019/04/13 15:16:27 by ycorrupt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 int	gnb(USI byte, int n) /*get n'th bit*/
 {
-	int i;
-
-	if (n < 0 || n > 15)
-		return (-1);
-	i = 1 << (15 - n);
-	return ((byte & i) > 0);
+	return ((byte & (1 << (15 - n))) != 0);
 }
 
 int snb(USI byte, int n, int bit) /*set n'th bit*/

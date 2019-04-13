@@ -1,9 +1,7 @@
 NAME = fillit
-SRCS = valid.c bits.c fillit.c main.c read.c
+SRCS = valid.c bits.c bruter.c main.c read.c clear.c search_n_insert.c
 OBJ = $(SRCS:.c=.o)
 FLAGS =  -Wall -Wextra -Werror
-FILES_C = find . -name "ft_*.c”
-FIL_FILES = valid/valid.c read/read.c bit/bits.c
 
 all: $(NAME)
 
