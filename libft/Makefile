@@ -6,7 +6,7 @@
 #    By: ycorrupt <ycorrupt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/05 17:33:42 by ycorrupt          #+#    #+#              #
-#    Updated: 2019/04/12 19:26:37 by ycorrupt         ###   ########.fr        #
+#    Updated: 2019/04/14 14:31:30 by ycorrupt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,12 @@ CC = gcc
 FLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 $(OBJ): $(SRCS)
-	$(CC) -I$(HEADER) $(FLAGS) -c $(SRCS)
+	@$(CC) -I$(HEADER) $(FLAGS) -c $(SRCS)
 $(NAME): $(OBJ)
-	ar rc $@ $^
-	ranlib $@
+	@ar rc $@ $^
+	@ranlib $@
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 re: fclean all
