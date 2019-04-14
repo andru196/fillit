@@ -1,4 +1,7 @@
 # fillit
+
+EVALUATED BY MOULINETTE AN HOUR AGO  100%
+\n
 некоторые недочеты:
 в массиве фиур не нужны буквы(f[i][1])
 не везде есть проверка el < 26
