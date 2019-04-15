@@ -60,7 +60,7 @@ int			fillit(USI figure[26][3])
 		++side;
 		i = 0;
 		while (figure[i][0])
-			figure[i++][2] = 4044;
+			figure[i++][2] = NOT_USE;
 	}
 	ft_print_result(square, side);
 	ft_memdel((void **)&square);

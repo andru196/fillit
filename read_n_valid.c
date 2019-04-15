@@ -14,9 +14,9 @@
 
 static USI			ter_transform(char *s)
 {
-	unsigned short int rez;
-	unsigned short int i;
-	unsigned short int j;
+	USI rez;
+	USI i;
+	USI j;
 
 	i = 15;
 	j = 16;
@@ -30,7 +30,7 @@ static USI			ter_transform(char *s)
 	while (*s && i)
 	{
 		if (*s == '#')
-			rez += ft_pow(2, i);
+			rez |= 1 << i;
 		s++;
 		i--;
 	}
@@ -93,11 +93,11 @@ static int			help_read(USI figure[26][3], int *flag,
 	flag[2] += 4;
 	ft_strcat((char *)tmp_line, (const char *)buf);
 	if (flag[2] > (26 * 16))
-		return (-1);
+		return (ft_freeret((void **)&buf, -1));
 	if (flag[1] == 4)
 	{
 		if (!(val_str_count(tmp_line)) || !(val_str_position(tmp_line)))
-			return (-1);
+			return (ft_freeret((void **)&buf, -1));
 		figure[(flag[2] / 16) - 1][0] = ter_transform((char *)tmp_line);
 		figure[(flag[2] / 16) - 1][1] = (flag[2] / 16) - 1 + 'A';
 		ft_bzero((void *)tmp_line, 17);
@@ -116,7 +116,7 @@ int					ft_read(int fd, USI figure[26][3])
 	while (get_next_line(fd, &buf) == 1 || buf)
 	{
 		if (flag[0] == 2 || flag[1] == 5)
-			return (-1);
+			return (ft_freeret((void **)&buf, -1));
 		if (ft_strlen((char *)buf) == 0)
 		{
 			flag[0] += 1;
@@ -125,10 +125,10 @@ int					ft_read(int fd, USI figure[26][3])
 		else if (ft_strlen((char *)buf) == 4)
 		{
 			if (help_read(figure, flag, tmp_line, buf) == -1)
-				return (-1);
+				return (ft_freeret((void **)&buf, -1));
 		}
 		else
-			return (-1);
+			return (ft_freeret((void **)&buf, -1));
 		free(buf);
 	}
 	return (flag[1] == 0 ? 0 : -1);

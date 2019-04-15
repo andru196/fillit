@@ -46,14 +46,14 @@ static USI	ft_searcher(USI f[3], char *sq, int s)
 	USI fig;
 
 	fig = f[0];
-	i = f[2] == 4044 ? 0 : f[2] + 1;
+	i = f[2] == NOT_USE ? 0 : f[2] + 1;
 	while (i < s * s)
 	{
 		if (sq[i] == '.')
 		{
 			if (i != 0 && sq[i - 1] != '.')
 			{
-				if (fig < (1 << 14) && (i - 2 > f[2] || f[2] == 4044))
+				if (fig < (1 << 14) && (i - 2 > f[2] || f[2] == NOT_USE))
 					if (ft_get_in(fig, sq, s, i - 2))
 						return (i - 2);
 				if (fig < (1 << 15) && i - 1 != f[2])
@@ -65,7 +65,7 @@ static USI	ft_searcher(USI f[3], char *sq, int s)
 		}
 		i++;
 	}
-	return (4044);
+	return (NOT_USE);
 }
 
 int			gnb(USI byte, int n)
@@ -80,7 +80,7 @@ int			ft_insert(USI f[3], char *square, int s)
 	int j;
 	USI fig;
 
-	if ((pos = ft_searcher(f, square, s)) == 4044)
+	if ((pos = ft_searcher(f, square, s)) == NOT_USE)
 		return (-1);
 	f[2] = (USI)pos;
 	i = 0;

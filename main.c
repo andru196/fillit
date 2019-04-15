@@ -21,7 +21,7 @@ static int		ft_error(int error)
 	return (-1);
 }
 
-void			inzero(USI figure[26][3])
+static void		inzero(USI figure[26][3])
 {
 	int		i;
 
@@ -30,7 +30,7 @@ void			inzero(USI figure[26][3])
 	{
 		figure[i][0] = 0;
 		figure[i][1] = 0;
-		figure[i][2] = 4044;
+		figure[i][2] = NOT_USE;
 		i++;
 	}
 }

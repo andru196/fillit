@@ -13,10 +13,10 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 # define USI unsigned short int
+# define NOT_USE 4044
 # include "libft.h"
 # include <fcntl.h>
 
-void	inzero(USI figure[26][3]);
 int		gnb(USI byte, int n);
 int		ft_read(int fd, USI figure[26][3]);
 void	ft_clear(USI f[26][3], char *square, int el, int s);

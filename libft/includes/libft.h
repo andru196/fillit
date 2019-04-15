@@ -27,6 +27,7 @@ typedef struct	s_list
 
 int				get_next_line(const int fd, char **line);
 void			*ft_memalloc(size_t size);
+int				ft_freeret(void **mem, int ret);
 void			ft_memdel(void **ap);
 char			*ft_strnew(size_t size);
 void			ft_strclr(char *s);

@@ -39,6 +39,6 @@ int				ft_bruter(USI f[26][3], char *square, int el, int s)
 			return (1);
 		ft_clear(f, square, el, s);
 	}
-	f[el][2] = 4044;
+	f[el][2] = NOT_USE;
 	return (0);
 }
